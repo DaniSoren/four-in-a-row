@@ -42,6 +42,15 @@ public class TestGame {
     }
 
     @Test
+    void shouldNotPlaceMoreThan6UnitsOnTopOfEachOther() {
+        for (int i = 0; i < 6; i++) {
+            game.putPieceAtColumn(0);
+        }
+        boolean pieceIsPut = game.putPieceAtColumn(0);
+        assertThat(pieceIsPut, is(false));
+    }
+
+    @Test
     void shouldBeBluePlayerFirst() {
         Player currentPlayer = game.getPlayerInTurn();
         Player blue = Player.BLUE;
