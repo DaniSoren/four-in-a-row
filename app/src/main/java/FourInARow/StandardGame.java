@@ -23,6 +23,6 @@ public class StandardGame implements Game {
 
     @Override
     public Player getPlayerInTurn() {
-        return null;
+        return Player.BLUE;
     }
 }
