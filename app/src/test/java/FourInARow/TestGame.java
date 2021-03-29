@@ -23,4 +23,14 @@ public class TestGame {
         assertThat(pieceAtColumn3, is(notNullValue()));
         assertThat(pieceAtColumn3, is(blue));
     }
+
+    @Test
+    void shouldButRedPieceAtColumn3AfterBluePieceAtColumn3() {
+        shouldPutBluePieceAtColumn3();
+
+        PieceType pieceAtColumn3=game.getPieceAt(4, 3);
+        PieceType red = PieceType.RED;
+        assertThat(pieceAtColumn3, is(notNullValue()));
+        assertThat(pieceAtColumn3, is(red));
+    }
 }
