@@ -6,4 +6,6 @@ public interface Game {
     void resetBoard();
     Player getWinner();
     Player getPlayerInTurn();
+    void endOfTurn();
+    void undoMove();
 }

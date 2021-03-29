@@ -25,4 +25,14 @@ public class StandardGame implements Game {
     public Player getPlayerInTurn() {
         return Player.BLUE;
     }
+
+    @Override
+    public void endOfTurn() {
+
+    }
+
+    @Override
+    public void undoMove() {
+
+    }
 }
