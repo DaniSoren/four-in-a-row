@@ -18,11 +18,14 @@ public class StandardGame implements Game {
             case BLUE -> PieceType.BLUE;
         };
         int currentRow = ROWS;
-        if(getPieceAt(ROWS-1, column) == null) {
-            currentRow = ROWS-1;
-        } else if(getPieceAt(ROWS-2, column) == null) {
-            currentRow = ROWS-2;
+
+        for (int row = ROWS - 1; row >= 0; row--) {
+            if(getPieceAt(row, column) == null) {
+                currentRow = row;
+                break;
+            }
         }
+
         pieces[currentRow][column] = pieceType;
 
         endOfTurn();
