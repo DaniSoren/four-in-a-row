@@ -21,7 +21,8 @@ public class StandardGame implements Game {
         int currentRow = ROWS;
 
         for (int row = ROWS - 1; row >= 0; row--) {
-            if (getPieceAt(row, column) == null) {
+            boolean positionIsEmpty = getPieceAt(row, column) == null;
+            if (positionIsEmpty) {
                 currentRow = row;
                 break;
             }
