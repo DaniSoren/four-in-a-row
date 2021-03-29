@@ -17,10 +17,11 @@ public class StandardGame implements Game {
             case RED -> PieceType.RED;
             case BLUE -> PieceType.BLUE;
         };
-        int currentRow = ROWS;
+
+        int currentRow = ROWS - 1;
 
         for (int row = ROWS - 1; row >= 0; row--) {
-            if(getPieceAt(row, column) == null) {
+            if (getPieceAt(row, column) == null) {
                 currentRow = row;
                 break;
             }
