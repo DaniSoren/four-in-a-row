@@ -8,7 +8,7 @@ public class StandardGame implements Game {
 
     @Override
     public PieceType getPieceAt(int row, int column) {
-        return null;
+        return PieceType.BLUE;
     }
 
     @Override
