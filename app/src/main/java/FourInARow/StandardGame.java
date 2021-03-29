@@ -34,8 +34,11 @@ public class StandardGame implements Game {
 
     @Override
     public void endOfTurn() {
-        if(playerInTurn == Player.BLUE) playerInTurn = Player.RED;
-        else playerInTurn = Player.BLUE;
+        switch (playerInTurn) {
+            case BLUE -> playerInTurn = Player.RED;
+            case RED -> playerInTurn = Player.BLUE;
+            default -> playerInTurn = null;
+        }
     }
 
     @Override
