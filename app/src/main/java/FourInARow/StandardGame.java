@@ -24,6 +24,9 @@ public class StandardGame implements Game {
             currentRow = ROWS-2;
         }
         pieces[currentRow][column] = pieceType;
+
+        endOfTurn();
+
         return true;
     }
 
