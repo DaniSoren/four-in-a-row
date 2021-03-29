@@ -28,7 +28,8 @@ public class StandardGame implements Game {
             }
         }
 
-        if(currentRow == ROWS) return false;
+        boolean noAvailableRowForUnit = currentRow == ROWS;
+        if(noAvailableRowForUnit) return false;
 
         pieces[currentRow][column] = pieceType;
 
