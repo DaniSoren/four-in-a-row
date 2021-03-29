@@ -13,7 +13,18 @@ public class StandardGame implements Game {
 
     @Override
     public boolean putPieceAtColumn(int column) {
-        return false;
+        PieceType pieceType = switch (getPlayerInTurn()) {
+            case RED -> PieceType.RED;
+            case BLUE -> PieceType.BLUE;
+        };
+        int currentRow = ROWS;
+        if(getPieceAt(ROWS-1, column) == null) {
+            currentRow = ROWS-1;
+        } else if(getPieceAt(ROWS-2, column) == null) {
+            currentRow = ROWS-2;
+        }
+        pieces[currentRow][column] = pieceType;
+        return true;
     }
 
     @Override
