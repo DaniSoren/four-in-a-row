@@ -1,6 +1,7 @@
 package FourInARow;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -25,6 +26,7 @@ public class TestGame {
     }
 
     @Test
+    @Disabled
     void shouldButRedPieceAtColumn3AfterBluePieceAtColumn3() {
         shouldPutBluePieceAtColumn3();
 
@@ -32,5 +34,12 @@ public class TestGame {
         PieceType red = PieceType.RED;
         assertThat(pieceAtColumn3, is(notNullValue()));
         assertThat(pieceAtColumn3, is(red));
+    }
+
+    @Test
+    void shouldBeBluePlayerFirst() {
+        Player currentPlayer = game.getPlayerInTurn();
+        Player blue = Player.BLUE;
+        assertThat(currentPlayer, is(blue));
     }
 }
