@@ -26,7 +26,6 @@ public class TestGame {
     }
 
     @Test
-    @Disabled
     void shouldButRedPieceAtColumn3AfterBluePieceAtColumn3() {
         shouldPutBluePieceAtColumn3();
 
