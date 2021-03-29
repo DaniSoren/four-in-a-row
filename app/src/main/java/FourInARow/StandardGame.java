@@ -20,4 +20,9 @@ public class StandardGame implements Game {
     public Player getWinner() {
         return null;
     }
+
+    @Override
+    public Player getPlayerInTurn() {
+        return null;
+    }
 }

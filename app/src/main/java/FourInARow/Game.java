@@ -5,4 +5,5 @@ public interface Game {
     PieceType getPieceAt(int row, int column);
     void resetBoard();
     Player getWinner();
+    Player getPlayerInTurn();
 }
