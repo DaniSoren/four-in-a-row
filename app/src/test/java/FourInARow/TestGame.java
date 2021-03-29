@@ -26,8 +26,9 @@ public class TestGame {
     }
 
     @Test
-    void shouldButRedPieceAtColumn3AfterBluePieceAtColumn3() {
+    void shouldPutRedPieceAtColumn3AfterBluePieceAtColumn3() {
         shouldPutBluePieceAtColumn3();
+        game.putPieceAtColumn(3);
 
         PieceType pieceAtColumn3 = game.getPieceAt(4, 3);
         PieceType red = PieceType.RED;
