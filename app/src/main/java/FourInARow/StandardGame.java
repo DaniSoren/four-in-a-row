@@ -1,10 +1,14 @@
 package FourInARow;
 
 public class StandardGame implements Game {
+    private static final int ROWS = 6;
+    private static final int COLUMNS = 7;
     private Player playerInTurn;
+    private PieceType[][] pieces;
 
     public StandardGame() {
         playerInTurn = Player.BLUE;
+        pieces = new PieceType[ROWS][COLUMNS];
     }
 
     @Override
@@ -14,7 +18,7 @@ public class StandardGame implements Game {
 
     @Override
     public PieceType getPieceAt(int row, int column) {
-        return PieceType.BLUE;
+        return pieces[row][column];
     }
 
     @Override
