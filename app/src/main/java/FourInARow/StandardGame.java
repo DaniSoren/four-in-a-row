@@ -1,6 +1,12 @@
 package FourInARow;
 
 public class StandardGame implements Game {
+    private Player playerInTurn;
+
+    public StandardGame() {
+        playerInTurn = Player.BLUE;
+    }
+
     @Override
     public boolean putPieceAtColumn(int column) {
         return false;
