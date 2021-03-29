@@ -18,20 +18,20 @@ public class StandardGame implements Game {
             case BLUE -> PieceType.BLUE;
         };
 
-        int currentRow = ROWS;
+        int availableRow = ROWS;
 
         for (int row = ROWS - 1; row >= 0; row--) {
             boolean positionIsEmpty = getPieceAt(row, column) == null;
             if (positionIsEmpty) {
-                currentRow = row;
+                availableRow = row;
                 break;
             }
         }
 
-        boolean noAvailableRowForUnit = currentRow == ROWS;
+        boolean noAvailableRowForUnit = availableRow == ROWS;
         if(noAvailableRowForUnit) return false;
 
-        pieces[currentRow][column] = pieceType;
+        pieces[availableRow][column] = pieceType;
 
         endOfTurn();
 
