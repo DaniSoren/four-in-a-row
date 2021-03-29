@@ -30,7 +30,7 @@ public class TestGame {
     void shouldButRedPieceAtColumn3AfterBluePieceAtColumn3() {
         shouldPutBluePieceAtColumn3();
 
-        PieceType pieceAtColumn3=game.getPieceAt(4, 3);
+        PieceType pieceAtColumn3 = game.getPieceAt(4, 3);
         PieceType red = PieceType.RED;
         assertThat(pieceAtColumn3, is(notNullValue()));
         assertThat(pieceAtColumn3, is(red));
@@ -41,5 +41,14 @@ public class TestGame {
         Player currentPlayer = game.getPlayerInTurn();
         Player blue = Player.BLUE;
         assertThat(currentPlayer, is(blue));
+    }
+
+    @Test
+    void shouldBeRedPlayerAfterBluePlayer() {
+        shouldBeBluePlayerFirst();
+        game.endOfTurn();
+        Player currentPlayer = game.getPlayerInTurn();
+        Player red = Player.RED;
+        assertThat(currentPlayer, is(red));
     }
 }
