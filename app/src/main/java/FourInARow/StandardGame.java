@@ -29,12 +29,13 @@ public class StandardGame implements Game {
 
     @Override
     public Player getPlayerInTurn() {
-        return Player.BLUE;
+        return playerInTurn;
     }
 
     @Override
     public void endOfTurn() {
-
+        if(playerInTurn == Player.BLUE) playerInTurn = Player.RED;
+        else playerInTurn = Player.BLUE;
     }
 
     @Override
