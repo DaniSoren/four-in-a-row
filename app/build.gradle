@@ -17,6 +17,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13'
 
@@ -27,4 +29,8 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClass = 'FourInARow.App'
+}
+
+test {
+    useJUnitPlatform()
 }
