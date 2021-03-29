@@ -18,7 +18,10 @@ public class TestGame {
 
     @Test
     void shouldPutBluePieceAtColumn3() {
-        game.putPieceAtColumn(3);
+        boolean pieceIsPut = game.putPieceAtColumn(3);
+
+        assertThat(pieceIsPut, is(true));
+
         PieceType pieceAtColumn3 = game.getPieceAt(5, 3);
         PieceType blue = PieceType.BLUE;
         assertThat(pieceAtColumn3, is(notNullValue()));
@@ -28,7 +31,9 @@ public class TestGame {
     @Test
     void shouldPutRedPieceAtColumn3AfterBluePieceAtColumn3() {
         shouldPutBluePieceAtColumn3();
-        game.putPieceAtColumn(3);
+        boolean pieceIsPut = game.putPieceAtColumn(3);
+
+        assertThat(pieceIsPut, is(true));
 
         PieceType pieceAtColumn3 = game.getPieceAt(4, 3);
         PieceType red = PieceType.RED;
