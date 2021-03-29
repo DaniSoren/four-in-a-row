@@ -3,14 +3,17 @@
  */
 package FourInARow;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 public class AppTest {
-    @Test @Ignore
+    @Test
+    @Disabled
     public void testAppHasAGreeting() {
         App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+        assertThat(classUnderTest.getGreeting(), is("Hello World!"));
     }
 }
