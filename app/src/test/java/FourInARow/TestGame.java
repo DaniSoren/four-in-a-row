@@ -24,23 +24,22 @@ public class TestGame {
         assertThat(pieceIsPut, is(true));
 
         PieceType pieceAtColumn3 = game.getPieceAt(5, 3);
-        PieceType blue = PieceType.BLUE;
         assertThat(pieceAtColumn3, is(notNullValue()));
-        assertThat(pieceAtColumn3, is(blue));
+        assertThat(pieceAtColumn3, is(PieceType.BLUE));
     }
 
     @Test
     void shouldPutRedPieceAtColumn3AfterBluePieceAtColumn3() {
         shouldPutBluePieceAtColumn3();
         game.endOfTurn();
+
         boolean pieceIsPut = game.putPieceAtColumn(3);
 
         assertThat(pieceIsPut, is(true));
 
         PieceType pieceAtColumn3 = game.getPieceAt(4, 3);
-        PieceType red = PieceType.RED;
         assertThat(pieceAtColumn3, is(notNullValue()));
-        assertThat(pieceAtColumn3, is(red));
+        assertThat(pieceAtColumn3, is(PieceType.RED));
     }
 
     @Test
@@ -49,6 +48,7 @@ public class TestGame {
             game.putPieceAtColumn(0);
             game.endOfTurn();
         }
+
         boolean pieceIsPut = game.putPieceAtColumn(0);
         assertThat(pieceIsPut, is(false));
     }
@@ -56,17 +56,16 @@ public class TestGame {
     @Test
     void shouldBeBluePlayerFirst() {
         Player currentPlayer = game.getPlayerInTurn();
-        Player blue = Player.BLUE;
-        assertThat(currentPlayer, is(blue));
+        assertThat(currentPlayer, is(Player.BLUE));
     }
 
     @Test
     void shouldBeRedPlayerAfterBluePlayer() {
         shouldBeBluePlayerFirst();
         game.endOfTurn();
+
         Player currentPlayer = game.getPlayerInTurn();
-        Player red = Player.RED;
-        assertThat(currentPlayer, is(red));
+        assertThat(currentPlayer, is(Player.RED));
     }
 
     @Test
@@ -80,10 +79,9 @@ public class TestGame {
         game.undoMove();
 
         Player currentPlayer = game.getPlayerInTurn();
-        Player blue = Player.BLUE;
         boolean pieceIsRemoved = game.getPieceAt(0, 4) == null;
 
-        assertThat(currentPlayer, is(blue));
+        assertThat(currentPlayer, is(Player.BLUE));
         assertThat(pieceIsRemoved, is(true));
     }
 
