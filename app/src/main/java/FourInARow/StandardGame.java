@@ -18,15 +18,7 @@ public class StandardGame implements Game {
             case BLUE -> PieceType.BLUE;
         };
 
-        int availableRow = ROWS;
-
-        for (int row = ROWS - 1; row >= 0; row--) {
-            boolean positionIsEmpty = getPieceAt(row, column) == null;
-            if (positionIsEmpty) {
-                availableRow = row;
-                break;
-            }
-        }
+        int availableRow = calculateNextAvailableRowAtColumn(column);
 
         boolean noAvailableRowForUnit = availableRow == ROWS;
         if(noAvailableRowForUnit) return false;
@@ -36,6 +28,19 @@ public class StandardGame implements Game {
         endOfTurn();
 
         return true;
+    }
+
+    private int calculateNextAvailableRowAtColumn(int column) {
+        int availableRow = ROWS;
+
+        for (int row = ROWS - 1; row >= 0; row--) {
+            boolean positionIsEmpty = getPieceAt(row, column) == null;
+            if (positionIsEmpty) {
+                availableRow = row;
+                break;
+            }
+        }
+        return availableRow;
     }
 
     @Override
