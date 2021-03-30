@@ -1,8 +1,8 @@
 package FourInARow;
 
+import static FourInARow.GameConstants.*;
+
 public class StandardGame implements Game {
-    private static final int ROWS = 6;
-    private static final int COLUMNS = 7;
     private Player playerInTurn;
     private PieceType[][] pieces;
     private int recentRow;
