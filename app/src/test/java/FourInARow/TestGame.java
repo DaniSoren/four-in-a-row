@@ -106,6 +106,19 @@ public class TestGame {
                 if(game.getPieceAt(i, j) != null) numberOfPiecesOnBoard++;
             }
         }
+
         assertThat(numberOfPiecesOnBoard, is(columns.length));
+
+        game.resetBoard();
+
+        int numberOfPiecesOnBoardAfterReset = 0;
+
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                if(game.getPieceAt(i, j) != null) numberOfPiecesOnBoardAfterReset++;
+            }
+        }
+
+        assertThat(numberOfPiecesOnBoardAfterReset, is(0));
     }
 }
