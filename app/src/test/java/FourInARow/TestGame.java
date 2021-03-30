@@ -85,4 +85,27 @@ public class TestGame {
         assertThat(currentPlayer, is(blue));
         assertThat(pieceIsRemoved, is(true));
     }
+
+    @Test
+    void shouldBoardBeResetAfterBeingInFixedPositions() {
+        int[] columns = {0, 4, 3, 0, 3, 0, 4, 1, 1, 4, 1, 4};
+        for (Integer column :
+                columns) {
+            boolean pieceIsPut = game.putPieceAtColumn(column);
+            assertThat(pieceIsPut, is(true));
+
+            game.endOfTurn();
+        }
+
+        int numberOfPiecesOnBoard = 0;
+        int ROWS = 6;
+        int COLUMNS = 7;
+
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                if(game.getPieceAt(i, j) != null) numberOfPiecesOnBoard++;
+            }
+        }
+        assertThat(numberOfPiecesOnBoard, is(columns.length));
+    }
 }
