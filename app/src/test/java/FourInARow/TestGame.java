@@ -31,6 +31,7 @@ public class TestGame {
     @Test
     void shouldPutRedPieceAtColumn3AfterBluePieceAtColumn3() {
         shouldPutBluePieceAtColumn3();
+        game.endOfTurn();
         boolean pieceIsPut = game.putPieceAtColumn(3);
 
         assertThat(pieceIsPut, is(true));
@@ -45,6 +46,7 @@ public class TestGame {
     void shouldNotPlaceMoreThan6UnitsOnTopOfEachOther() {
         for (int i = 0; i < 6; i++) {
             game.putPieceAtColumn(0);
+            game.endOfTurn();
         }
         boolean pieceIsPut = game.putPieceAtColumn(0);
         assertThat(pieceIsPut, is(false));
