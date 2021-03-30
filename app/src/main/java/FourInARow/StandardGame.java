@@ -5,6 +5,8 @@ public class StandardGame implements Game {
     private static final int COLUMNS = 7;
     private Player playerInTurn;
     private PieceType[][] pieces;
+    private int recentRow;
+    private int recentColumn;
 
     public StandardGame() {
         playerInTurn = Player.BLUE;
@@ -23,7 +25,9 @@ public class StandardGame implements Game {
             case BLUE -> PieceType.BLUE;
         };
 
-        pieces[availableRow][column] = pieceType;
+        recentRow = availableRow;
+        recentColumn = column;
+        pieces[recentRow][recentColumn] = pieceType;
 
         return true;
     }
@@ -72,6 +76,6 @@ public class StandardGame implements Game {
 
     @Override
     public void undoMove() {
-
+        pieces[recentRow][recentColumn] = null;
     }
 }
