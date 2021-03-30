@@ -71,7 +71,7 @@ public class TestGame {
     @Test
     void shouldBluePlayerUndoMoveAndStillBeBluePlayersTurn() {
         boolean pieceIsPut = game.putPieceAtColumn(4);
-        PieceType piece = game.getPieceAt(0, 4);
+        PieceType piece = game.getPieceAt(5, 4);
 
         assertThat(pieceIsPut, is(true));
         assertThat(piece, is(notNullValue()));
@@ -79,7 +79,7 @@ public class TestGame {
         game.undoMove();
 
         Player currentPlayer = game.getPlayerInTurn();
-        PieceType blue = PieceType.BLUE;
+        Player blue = Player.BLUE;
         boolean pieceIsRemoved = game.getPieceAt(0, 4) == null;
 
         assertThat(currentPlayer, is(blue));
