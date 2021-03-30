@@ -25,11 +25,15 @@ public class StandardGame implements Game {
             case BLUE -> PieceType.BLUE;
         };
 
-        recentRow = availableRow;
-        recentColumn = column;
-        pieces[recentRow][recentColumn] = pieceType;
+        placeUnitWithTypeAtRowAndColumn(pieceType, availableRow, column);
 
         return true;
+    }
+
+    private void placeUnitWithTypeAtRowAndColumn(PieceType type, int row, int column) {
+        recentRow = row;
+        recentColumn = column;
+        pieces[recentRow][recentColumn] = type;
     }
 
     private int calculateNextAvailableRowAtColumn(int column) {
