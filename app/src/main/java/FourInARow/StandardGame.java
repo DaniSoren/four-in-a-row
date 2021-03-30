@@ -52,7 +52,11 @@ public class StandardGame implements Game {
 
     @Override
     public void resetBoard() {
-
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                pieces[i][j] = null;
+            }
+        }
     }
 
     @Override
