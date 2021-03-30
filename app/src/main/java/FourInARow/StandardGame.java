@@ -13,15 +13,15 @@ public class StandardGame implements Game {
 
     @Override
     public boolean putPieceAtColumn(int column) {
-        PieceType pieceType = switch (getPlayerInTurn()) {
-            case RED -> PieceType.RED;
-            case BLUE -> PieceType.BLUE;
-        };
-
         int availableRow = calculateNextAvailableRowAtColumn(column);
 
         boolean noAvailableRowForUnit = availableRow == ROWS;
         if(noAvailableRowForUnit) return false;
+
+        PieceType pieceType = switch (getPlayerInTurn()) {
+            case RED -> PieceType.RED;
+            case BLUE -> PieceType.BLUE;
+        };
 
         pieces[availableRow][column] = pieceType;
 
