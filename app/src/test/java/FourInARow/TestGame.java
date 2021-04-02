@@ -120,4 +120,22 @@ public class TestGame {
 
         assertThat(numberOfPiecesOnBoardAfterReset, is(0));
     }
+
+    @Test
+    void shouldHaveVerticalWinner() {
+        int[] columns = {1, 2, 3, 2, 4, 2, 4, 2};
+        for (Integer column :
+                columns) {
+            game.putPieceAtColumn(column);
+            game.endOfTurn();
+        }
+
+        assertThat(game.getPieceAt(ROWS-1, 2), is(PieceType.RED));
+        assertThat(game.getPieceAt(ROWS-2, 2), is(PieceType.RED));
+        assertThat(game.getPieceAt(ROWS-3, 2), is(PieceType.RED));
+        assertThat(game.getPieceAt(ROWS-4, 2), is(PieceType.RED));
+
+        Player winner = game.getWinner();
+        assertThat(winner, is(Player.RED));
+    }
 }
