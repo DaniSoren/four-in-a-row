@@ -78,12 +78,13 @@ public class StandardGame implements Game {
                 };
 
                 for (int k = 0; k < 4; k++) {
-                    Player ownerOfPiece = null;
-                    if(getPieceAt(i + k, j) == PieceType.RED) ownerOfPiece = Player.RED;
-                    else if(getPieceAt(i + k, j) == PieceType.BLUE) ownerOfPiece = Player.BLUE;
-                    if(ownerOfPiece != candidate) {
-                        candidate = null;
-                    }
+                    Player ownerOfPiece = switch (getPieceAt(i + k, j)) {
+                        case RED -> Player.RED;
+                        case BLUE -> Player.BLUE;
+                        default -> null;
+                    };
+
+                    if(ownerOfPiece != candidate) candidate = null;
                 }
 
                 if(candidate != null) return candidate;
