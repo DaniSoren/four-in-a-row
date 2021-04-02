@@ -187,4 +187,23 @@ public class TestGame {
         Player winner = game.getWinner();
         assertThat(winner, is(Player.BLUE));
     }
+
+    @Test
+    @Disabled
+    void shouldHaveRightDiagonalWinner() {
+        Integer[] columns = {6, 3, 2, 2, 1, 1, 0, 1, 0, 4, 0, 0};
+        for (Integer column :
+                columns) {
+            game.putPieceAtColumn(column);
+            game.endOfTurn();
+        }
+
+        assertThat(game.getPieceAt(ROWS-1, 3), is(PieceType.RED));
+        assertThat(game.getPieceAt(ROWS-2, 2), is(PieceType.RED));
+        assertThat(game.getPieceAt(ROWS-3, 1), is(PieceType.RED));
+        assertThat(game.getPieceAt(ROWS-4, 0), is(PieceType.RED));
+
+        Player winner = game.getWinner();
+        assertThat(winner, is(Player.RED));
+    }
 }
