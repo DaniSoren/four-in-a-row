@@ -81,7 +81,7 @@ public class TestGame {
         game.undoMove();
 
         Player currentPlayer = game.getPlayerInTurn();
-        boolean pieceIsRemoved = game.getPieceAt(0, 4) == null;
+        boolean pieceIsRemoved = game.getPieceAt(0, 4) == PieceType.NONE;
 
         assertThat(currentPlayer, is(Player.BLUE));
         assertThat(pieceIsRemoved, is(true));
@@ -102,7 +102,7 @@ public class TestGame {
 
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
-                if(game.getPieceAt(i, j) != null) numberOfPiecesOnBoard++;
+                if(game.getPieceAt(i, j) != PieceType.NONE) numberOfPiecesOnBoard++;
             }
         }
 
