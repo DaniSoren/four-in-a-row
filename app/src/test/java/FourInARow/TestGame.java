@@ -151,4 +151,22 @@ public class TestGame {
         Player winner = game.getWinner();
         assertThat(winner, is(nullValue()));
     }
+
+    @Test
+    void shouldHaveHorizontalWinner() {
+        Integer[] columns = {2, 1, 3, 2, 4, 3, 5};
+        for (Integer column :
+                columns) {
+            game.putPieceAtColumn(column);
+            game.endOfTurn();
+        }
+
+        assertThat(game.getPieceAt(ROWS-1, 2), is(PieceType.BLUE));
+        assertThat(game.getPieceAt(ROWS-1, 3), is(PieceType.BLUE));
+        assertThat(game.getPieceAt(ROWS-1, 4), is(PieceType.BLUE));
+        assertThat(game.getPieceAt(ROWS-1, 5), is(PieceType.BLUE));
+
+        Player winner = game.getWinner();
+        assertThat(winner, is(Player.BLUE));
+    }
 }
