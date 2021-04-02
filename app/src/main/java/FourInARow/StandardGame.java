@@ -11,6 +11,12 @@ public class StandardGame implements Game {
     public StandardGame() {
         playerInTurn = Player.BLUE;
         pieces = new PieceType[ROWS][COLUMNS];
+
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                pieces[i][j] = PieceType.NONE;
+            }
+        }
     }
 
     @Override
@@ -38,7 +44,7 @@ public class StandardGame implements Game {
         int availableRow = ROWS;
 
         for (int row = ROWS - 1; row >= 0; row--) {
-            boolean positionIsEmpty = getPieceAt(row, column) == null;
+            boolean positionIsEmpty = getPieceAt(row, column) == PieceType.NONE;
             if (positionIsEmpty) {
                 availableRow = row;
                 break;
@@ -82,6 +88,6 @@ public class StandardGame implements Game {
 
     @Override
     public void undoMove() {
-        pieces[recentRow][recentColumn] = null;
+        pieces[recentRow][recentColumn] = PieceType.NONE;
     }
 }
