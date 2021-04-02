@@ -69,6 +69,21 @@ public class StandardGame implements Game {
 
     @Override
     public Player getWinner() {
+        for (int i = 0; i < ROWS - 3; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                Player candidate = switch (getPieceAt(i, j)) {
+                    case RED -> Player.RED;
+                    case BLUE -> Player.BLUE;
+                    default -> null;
+                };
+
+                if (getPieceAt(i, j) == getPieceAt(i + 1, j) &&
+                        getPieceAt(i + 1, j) == getPieceAt(i + 2, j) &&
+                        getPieceAt(i + 2, j) == getPieceAt(i + 3, j)) {
+                    if (candidate != null) return candidate;
+                }
+            }
+        }
         return null;
     }
 
