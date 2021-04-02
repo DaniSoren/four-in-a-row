@@ -31,9 +31,7 @@ public class StandardGame implements Game {
     }
 
     private void placeUnitWithTypeAtRowAndColumn(PieceType type, int row, int column) {
-        recentRow = row;
-        recentColumn = column;
-        pieces[recentRow][recentColumn] = type;
+        pieces[row][column] = type;
     }
 
     private int calculateNextAvailableRowAtColumn(int column) {
