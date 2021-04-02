@@ -91,6 +91,29 @@ public class StandardGame implements Game {
 
             }
         }
+
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS - 3; j++) {
+                Player candidate = switch (getPieceAt(i, j)) {
+                    case RED -> Player.RED;
+                    case BLUE -> Player.BLUE;
+                    default -> null;
+                };
+
+                for (int k = 0; k < 4; k++) {
+                    Player ownerOfPiece = switch (getPieceAt(i, j + k)) {
+                        case RED -> Player.RED;
+                        case BLUE -> Player.BLUE;
+                        default -> null;
+                    };
+
+                    if(ownerOfPiece != candidate) candidate = null;
+                }
+
+                if(candidate != null) return candidate;
+
+            }
+        }
         return null;
     }
 
