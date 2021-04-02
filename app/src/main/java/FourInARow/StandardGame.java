@@ -77,11 +77,17 @@ public class StandardGame implements Game {
                     default -> null;
                 };
 
-                if (getPieceAt(i, j) == getPieceAt(i + 1, j) &&
-                        getPieceAt(i + 1, j) == getPieceAt(i + 2, j) &&
-                        getPieceAt(i + 2, j) == getPieceAt(i + 3, j)) {
-                    if (candidate != null) return candidate;
+                for (int k = 0; k < 4; k++) {
+                    Player ownerOfPiece = null;
+                    if(getPieceAt(i + k, j) == PieceType.RED) ownerOfPiece = Player.RED;
+                    else if(getPieceAt(i + k, j) == PieceType.BLUE) ownerOfPiece = Player.BLUE;
+                    if(ownerOfPiece != candidate) {
+                        candidate = null;
+                    }
                 }
+
+                if(candidate != null) return candidate;
+
             }
         }
         return null;
