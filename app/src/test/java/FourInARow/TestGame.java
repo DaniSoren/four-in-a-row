@@ -138,4 +138,17 @@ public class TestGame {
         Player winner = game.getWinner();
         assertThat(winner, is(Player.RED));
     }
+
+    @Test
+    void shouldNotHaveWinnerWhenWinConditionsNotMet() {
+        Integer[] columns = {4, 4, 5, 5, 5, 5};
+        for (Integer column :
+                columns) {
+            game.putPieceAtColumn(column);
+            game.endOfTurn();
+        }
+
+        Player winner = game.getWinner();
+        assertThat(winner, is(nullValue()));
+    }
 }
