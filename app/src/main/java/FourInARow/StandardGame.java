@@ -83,19 +83,7 @@ public class StandardGame implements Game {
                 boolean hasColumnWinner = false;
 
                 if(i < ROWS - 3) {
-                    boolean hasPotentialRowWinner = true;
-
-                    for (int k = 0; k < 4; k++) {
-                        Player ownerOfPiece = switch (getPieceAt(i + k, j)) {
-                            case RED -> Player.RED;
-                            case BLUE -> Player.BLUE;
-                            case NONE -> null;
-                        };
-
-                        if (ownerOfPiece != candidate) hasPotentialRowWinner = false;
-                    }
-
-                    if(hasPotentialRowWinner) hasRowWinner = true;
+                    hasRowWinner = hasCandidateWinningRowCombinationAtPosition(candidate, i, j);
                 }
 
                 if(j < COLUMNS - 3) {
@@ -142,6 +130,19 @@ public class StandardGame implements Game {
             }
         }*/
         return null;
+    }
+
+    private boolean hasCandidateWinningRowCombinationAtPosition(Player candidate, int i, int j) {
+        for (int k = 0; k < 4; k++) {
+            Player ownerOfPiece = switch (getPieceAt(i + k, j)) {
+                case RED -> Player.RED;
+                case BLUE -> Player.BLUE;
+                case NONE -> null;
+            };
+
+            if (ownerOfPiece != candidate) return false;
+        }
+        return true;
     }
 
     @Override
