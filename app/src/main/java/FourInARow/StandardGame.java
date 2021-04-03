@@ -93,11 +93,11 @@ public class StandardGame implements Game {
         boolean hasPotentialColumnWinner = true;
 
         for (int k = 0; k < 4; k++) {
-            Player ownerOfPieceAtkAdjacentRow = null;
-            Player ownerOfPieceAtkAdjacentColumn = null;
+            Player ownerOfPieceAtkthAdjacentRow = null;
+            Player ownerOfPieceAtkthAdjacentColumn = null;
 
             if(i + k < ROWS) {
-                ownerOfPieceAtkAdjacentRow = switch (getPieceAt(i + k, j)) {
+                ownerOfPieceAtkthAdjacentRow = switch (getPieceAt(i + k, j)) {
                     case RED -> Player.RED;
                     case BLUE -> Player.BLUE;
                     case NONE -> null;
@@ -105,15 +105,15 @@ public class StandardGame implements Game {
             }
 
             if(j + k < COLUMNS) {
-                ownerOfPieceAtkAdjacentColumn = switch (getPieceAt(i, j + k)) {
+                ownerOfPieceAtkthAdjacentColumn = switch (getPieceAt(i, j + k)) {
                     case RED -> Player.RED;
                     case BLUE -> Player.BLUE;
                     case NONE -> null;
                 };
             }
 
-            if (ownerOfPieceAtkAdjacentRow != candidate) hasPotentialRowWinner = false;
-            if (ownerOfPieceAtkAdjacentColumn != candidate) hasPotentialColumnWinner = false;
+            if (ownerOfPieceAtkthAdjacentRow != candidate) hasPotentialRowWinner = false;
+            if (ownerOfPieceAtkthAdjacentColumn != candidate) hasPotentialColumnWinner = false;
         }
         return hasPotentialRowWinner || hasPotentialColumnWinner;
     }
