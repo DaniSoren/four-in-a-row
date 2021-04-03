@@ -79,11 +79,9 @@ public class StandardGame implements Game {
 
                 if(candidate == null) continue;
 
-                boolean hasRowWinner;
+                boolean hasWinner = hasCandidateWinningCombinationAtPosition(candidate, i, j);
 
-                hasRowWinner = hasCandidateWinningCombinationAtPosition(candidate, i, j);
-
-                if(hasRowWinner) return candidate;
+                if(hasWinner) return candidate;
 
             }
         }
