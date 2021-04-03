@@ -69,7 +69,7 @@ public class StandardGame implements Game {
 
     @Override
     public Player getWinner() {
-        for (int i = 0; i < ROWS - 3; i++) {
+        for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
                 Player candidate = switch (getPieceAt(i, j)) {
                     case RED -> Player.RED;
@@ -77,14 +77,19 @@ public class StandardGame implements Game {
                     default -> null;
                 };
 
-                for (int k = 0; k < 4; k++) {
-                    Player ownerOfPiece = switch (getPieceAt(i + k, j)) {
-                        case RED -> Player.RED;
-                        case BLUE -> Player.BLUE;
-                        default -> null;
-                    };
+                if(i < ROWS - 3) {
 
-                    if(ownerOfPiece != candidate) candidate = null;
+                    for (int k = 0; k < 4; k++) {
+                        Player ownerOfPiece = switch (getPieceAt(i + k, j)) {
+                            case RED -> Player.RED;
+                            case BLUE -> Player.BLUE;
+                            default -> null;
+                        };
+
+                        if (ownerOfPiece != candidate) candidate = null;
+                    }
+                } else {
+                    continue;
                 }
 
                 if(candidate != null) return candidate;
