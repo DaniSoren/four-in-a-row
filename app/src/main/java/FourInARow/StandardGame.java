@@ -115,6 +115,7 @@ public class StandardGame implements Game {
             if (ownerOfPieceAtkthAdjacentRow != candidate) hasPotentialRowWinner = false;
             if (ownerOfPieceAtkthAdjacentColumn != candidate) hasPotentialColumnWinner = false;
         }
+
         return hasPotentialRowWinner || hasPotentialColumnWinner;
     }
 
