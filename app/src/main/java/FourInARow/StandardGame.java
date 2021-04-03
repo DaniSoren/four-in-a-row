@@ -82,23 +82,8 @@ public class StandardGame implements Game {
                 boolean hasRowWinner = false;
                 boolean hasColumnWinner = false;
 
-                hasRowWinner = hasCandidateWinningRowCombinationAtPosition(candidate, i, j);
-
-                if(j < COLUMNS - 3) {
-                    boolean hasPotentialColumnWinner = true;
-
-                    for (int k = 0; k < 4; k++) {
-                        Player ownerOfPiece = switch (getPieceAt(i, j + k)) {
-                            case RED -> Player.RED;
-                            case BLUE -> Player.BLUE;
-                            case NONE -> null;
-                        };
-
-                        if (ownerOfPiece != candidate) hasPotentialColumnWinner = false;
-                    }
-
-                    if(hasPotentialColumnWinner) hasColumnWinner = true;
-                }
+                hasRowWinner = hasCandidateWinningCombinationAtPosition(candidate, i, j);
+                hasColumnWinner = hasCandidateWinningCombinationAtPosition(candidate, i, j);
 
                 if(hasRowWinner || hasColumnWinner) return candidate;
 
@@ -107,11 +92,14 @@ public class StandardGame implements Game {
         return null;
     }
 
-    private boolean hasCandidateWinningRowCombinationAtPosition(Player candidate, int i, int j) {
+    private boolean hasCandidateWinningCombinationAtPosition(Player candidate, int i, int j) {
         boolean hasPotentialRowWinner = true;
+        boolean hasPotentialColumnWinner = true;
 
         for (int k = 0; k < 4; k++) {
             Player ownerOfPieceAtkAdjacentRow = null;
+            Player ownerOfPieceAtkAdjacentColumn = null;
+
             if(i + k < ROWS) {
                 ownerOfPieceAtkAdjacentRow = switch (getPieceAt(i + k, j)) {
                     case RED -> Player.RED;
@@ -120,9 +108,18 @@ public class StandardGame implements Game {
                 };
             }
 
+            if(j + k < COLUMNS) {
+                ownerOfPieceAtkAdjacentColumn = switch (getPieceAt(i, j + k)) {
+                    case RED -> Player.RED;
+                    case BLUE -> Player.BLUE;
+                    case NONE -> null;
+                };
+            }
+
             if (ownerOfPieceAtkAdjacentRow != candidate) hasPotentialRowWinner = false;
+            if (ownerOfPieceAtkAdjacentColumn != candidate) hasPotentialColumnWinner = false;
         }
-        return hasPotentialRowWinner;
+        return hasPotentialRowWinner || hasPotentialColumnWinner;
     }
 
     @Override
