@@ -74,7 +74,7 @@ public class StandardGame implements Game {
                 Player candidate = switch (getPieceAt(i, j)) {
                     case RED -> Player.RED;
                     case BLUE -> Player.BLUE;
-                    default -> null;
+                    case NONE -> null;
                 };
 
                 if(candidate == null) continue;
@@ -89,7 +89,7 @@ public class StandardGame implements Game {
                         Player ownerOfPiece = switch (getPieceAt(i + k, j)) {
                             case RED -> Player.RED;
                             case BLUE -> Player.BLUE;
-                            default -> null;
+                            case NONE -> null;
                         };
 
                         if (ownerOfPiece != candidate) hasPotentialRowWinner = false;
@@ -105,7 +105,7 @@ public class StandardGame implements Game {
                         Player ownerOfPiece = switch (getPieceAt(i, j + k)) {
                             case RED -> Player.RED;
                             case BLUE -> Player.BLUE;
-                            default -> null;
+                            case NONE -> null;
                         };
 
                         if (ownerOfPiece != candidate) hasPotentialColumnWinner = false;
