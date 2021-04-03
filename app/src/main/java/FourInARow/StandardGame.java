@@ -77,11 +77,11 @@ public class StandardGame implements Game {
                     case NONE -> null;
                 };
 
-                if(candidate == null) continue;
+                if (candidate == null) continue;
 
                 boolean hasWinner = hasCandidateWinningCombinationAtPosition(candidate, i, j);
 
-                if(hasWinner) return candidate;
+                if (hasWinner) return candidate;
 
             }
         }
@@ -96,7 +96,7 @@ public class StandardGame implements Game {
             Player ownerOfPieceAtkthAdjacentRow = null;
             Player ownerOfPieceAtkthAdjacentColumn = null;
 
-            if(i + k < ROWS) {
+            if (i + k < ROWS) {
                 ownerOfPieceAtkthAdjacentRow = switch (getPieceAt(i + k, j)) {
                     case RED -> Player.RED;
                     case BLUE -> Player.BLUE;
@@ -104,7 +104,7 @@ public class StandardGame implements Game {
                 };
             }
 
-            if(j + k < COLUMNS) {
+            if (j + k < COLUMNS) {
                 ownerOfPieceAtkthAdjacentColumn = switch (getPieceAt(i, j + k)) {
                     case RED -> Player.RED;
                     case BLUE -> Player.BLUE;
