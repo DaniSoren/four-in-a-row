@@ -108,19 +108,21 @@ public class StandardGame implements Game {
     }
 
     private boolean hasCandidateWinningRowCombinationAtPosition(Player candidate, int i, int j) {
+        boolean hasPotentialRowWinner = true;
+
         for (int k = 0; k < 4; k++) {
-            Player ownerOfPiece = null;
+            Player ownerOfPieceAtkAdjacentRow = null;
             if(i + k < ROWS) {
-                ownerOfPiece = switch (getPieceAt(i + k, j)) {
+                ownerOfPieceAtkAdjacentRow = switch (getPieceAt(i + k, j)) {
                     case RED -> Player.RED;
                     case BLUE -> Player.BLUE;
                     case NONE -> null;
                 };
             }
 
-            if (ownerOfPiece != candidate) return false;
+            if (ownerOfPieceAtkAdjacentRow != candidate) hasPotentialRowWinner = false;
         }
-        return true;
+        return hasPotentialRowWinner;
     }
 
     @Override
