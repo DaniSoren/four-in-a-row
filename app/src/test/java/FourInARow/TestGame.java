@@ -171,7 +171,6 @@ public class TestGame {
     }
 
     @Test
-    @Disabled
     void shouldHaveLeftDiagonalWinner() {
         Integer[] columns = {2, 3, 3, 4, 4, 5, 4, 5, 6, 5, 5};
         for (Integer column :
