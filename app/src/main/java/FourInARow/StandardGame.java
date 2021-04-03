@@ -77,7 +77,13 @@ public class StandardGame implements Game {
                     default -> null;
                 };
 
+                if(candidate == null) continue;
+
+                boolean hasRowWinner = false;
+
                 if(i < ROWS - 3) {
+                    boolean hasPotentialRowWinner = true;
+
                     for (int k = 0; k < 4; k++) {
                         Player ownerOfPiece = switch (getPieceAt(i + k, j)) {
                             case RED -> Player.RED;
@@ -85,11 +91,13 @@ public class StandardGame implements Game {
                             default -> null;
                         };
 
-                        if (ownerOfPiece != candidate) candidate = null;
+                        if (ownerOfPiece != candidate) hasPotentialRowWinner = false;
                     }
+
+                    if(hasPotentialRowWinner) hasRowWinner = true;
                 } else continue;
 
-                if(candidate != null) return candidate;
+                if(hasRowWinner) return candidate;
 
             }
         }
