@@ -172,17 +172,17 @@ public class TestGame {
 
     @Test
     void shouldHaveLeftDiagonalWinner() {
-        Integer[] columns = {2, 3, 3, 4, 4, 5, 4, 5, 6, 5, 5};
+        Integer[] columns = {3, 2, 2, 1, 1, 3, 1, 0, 0, 0, 0};
         for (Integer column :
                 columns) {
             game.putPieceAtColumn(column);
             game.endOfTurn();
         }
 
-        assertThat(game.getPieceAt(ROWS-1, 2), is(PieceType.BLUE));
-        assertThat(game.getPieceAt(ROWS-2, 3), is(PieceType.BLUE));
-        assertThat(game.getPieceAt(ROWS-3, 4), is(PieceType.BLUE));
-        assertThat(game.getPieceAt(ROWS-4, 5), is(PieceType.BLUE));
+        assertThat(game.getPieceAt(ROWS-1, 3), is(PieceType.BLUE));
+        assertThat(game.getPieceAt(ROWS-2, 2), is(PieceType.BLUE));
+        assertThat(game.getPieceAt(ROWS-3, 1), is(PieceType.BLUE));
+        assertThat(game.getPieceAt(ROWS-4, 0), is(PieceType.BLUE));
 
         Player winner = game.getWinner();
         assertThat(winner, is(Player.BLUE));
