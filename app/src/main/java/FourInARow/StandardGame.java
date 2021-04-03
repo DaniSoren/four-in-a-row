@@ -91,12 +91,14 @@ public class StandardGame implements Game {
     private boolean hasCandidateWinningCombinationAtPosition(Player candidate, int i, int j) {
         boolean hasPotentialRowWinner = true;
         boolean hasPotentialColumnWinner = true;
+        boolean hasPotentialLeftDiagonalWinner = true;
 
         for (int k = 0; k < 4; k++) {
             Player ownerOfPieceAtkthAdjacentRow = null;
             Player ownerOfPieceAtkthAdjacentColumn = null;
+            Player ownerOfPieceAtkthAdjacentLeftDiagonal = null;
 
-            if (i + k < ROWS) {
+            if (i < ROWS - 3) {
                 ownerOfPieceAtkthAdjacentRow = switch (getPieceAt(i + k, j)) {
                     case RED -> Player.RED;
                     case BLUE -> Player.BLUE;
@@ -104,8 +106,17 @@ public class StandardGame implements Game {
                 };
             }
 
-            if (j + k < COLUMNS) {
+            if (j < COLUMNS - 3) {
                 ownerOfPieceAtkthAdjacentColumn = switch (getPieceAt(i, j + k)) {
+                    case RED -> Player.RED;
+                    case BLUE -> Player.BLUE;
+                    case NONE -> null;
+                };
+            }
+
+            if(i >= 3 && j >= 3) {
+
+                ownerOfPieceAtkthAdjacentLeftDiagonal = switch (getPieceAt(i - k, j - k)) {
                     case RED -> Player.RED;
                     case BLUE -> Player.BLUE;
                     case NONE -> null;
@@ -114,9 +125,10 @@ public class StandardGame implements Game {
 
             if (ownerOfPieceAtkthAdjacentRow != candidate) hasPotentialRowWinner = false;
             if (ownerOfPieceAtkthAdjacentColumn != candidate) hasPotentialColumnWinner = false;
+            if (ownerOfPieceAtkthAdjacentLeftDiagonal != candidate) hasPotentialLeftDiagonalWinner = false;
         }
 
-        return hasPotentialRowWinner || hasPotentialColumnWinner;
+        return hasPotentialRowWinner || hasPotentialColumnWinner || hasPotentialLeftDiagonalWinner;
     }
 
     @Override
