@@ -78,7 +78,6 @@ public class StandardGame implements Game {
                 };
 
                 if(i < ROWS - 3) {
-
                     for (int k = 0; k < 4; k++) {
                         Player ownerOfPiece = switch (getPieceAt(i + k, j)) {
                             case RED -> Player.RED;
@@ -88,9 +87,7 @@ public class StandardGame implements Game {
 
                         if (ownerOfPiece != candidate) candidate = null;
                     }
-                } else {
-                    continue;
-                }
+                } else continue;
 
                 if(candidate != null) return candidate;
 
